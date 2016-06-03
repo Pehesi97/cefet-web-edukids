@@ -2,7 +2,7 @@
  * botões play/stop (para que o elemento se revele lentamente)
  */
  #controles ul {
-     
+     transition: 0.3s ease-in-out;
  }
 
 /*
@@ -13,18 +13,102 @@
  *   - perturbado: animal fica pulsando
  *   - instinto-selvagem: animal dá um salto e cresce, com uma borda vermelha
  */
-.agitado {}
-.agitado img {}
+.agitado {
+    animation: piscando 1s ease-in-out 0s infinite alternate;
+}
+@keyframes piscando {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.7;
+    }
+}
+.agitado img {
+  position: relative;
+  animation: pulsarleve 1s ease-in-out 0s infinite alternate;
+}
+@keyframes pulsarleve {
+    15% {
+        transform: translateY(4px);
+    }
+    30% {
+        transform: translateY(-4px);
+    }
+    50% {
+        transform: translateY(2px);
+    }
+    65% {
+        transform: translateY(-2px);
+    }
+    80% {
+        transform: translateY(1px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 
-.alimentado {}
-.alimentado img {}
+.alimentado {
+    animation: alegre 1s ease 0s 1;
+}
+@keyframes alegre {
+    from {
+        transform: rotateZ(0);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+.alimentado img {
+    border: 3px solid green;
+}
 
-.perturbado {}
-.perturbado img {}
+.perturbado {
+    animation: pulsar 1s ease-in-out 0s infinite alternate;
+}
+@keyframes pulsar {
+    15% {
+        transform: translateX(5px);
+    }
+    30% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(3px);
+    }
+    65% {
+        transform: translateX(-3px);
+    }
+    80% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+.perturbado img {
 
-.instinto-selvagem {}
-.instinto-selvagem img {}
+}
 
+.instinto-selvagem {
+    animation: boladao 0.5s ease 0s 1;
+}
+.instinto-selvagem img {
+
+}
+@keyframes boladao {
+    0% {
+        transform: scale(1) rotate(0);
+    }
+    30% {
+        transform: scale(0) rotate(0);
+    }
+    100% {
+        transform: scale(3) rotate(10deg);
+        opacity: 0;
+    }
+}
 /*
  * Exercício 3: Criar uma imagem sprite com as imagens dos botões de controle
  * (icone-comecar.png e icone-parar.png). Sugestões:
@@ -33,9 +117,13 @@
  *
  */
 
-.comecar,
-.parar {}
+ .comecar,
+ .parar {
+   width: 24px;
+   height: 24px;
+   background-image: url('imgs/sprite-controles.png');
+ }
 
-.comecar {}
-
-.parar {}
+ .parar {
+   background-position: 0 24px;
+ }
