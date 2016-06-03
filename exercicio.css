@@ -127,3 +127,7 @@
  .parar {
    background-position: 0 24px;
  }
+
+figure {
+    box-sizing: border-box;
+}
